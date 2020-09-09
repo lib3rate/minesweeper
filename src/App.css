@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0;
+  height: 5rem;
+  background-color: darkgreen;
+  color: white;
+}
+
+.stats, .flags, .clock, .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats {
+  width: 7rem;
+}
+
+.flags {
+  width: 3rem;
+}
+
+.clock {
+  width: 3rem;
+}
+
+.actions {
+  width: 5rem;
+}
+
+.cell {
+  display: flex;
+  margin: 0.5rem;
+  border: 1px;
+}
