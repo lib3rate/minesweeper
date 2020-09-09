@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { configureStore } from '@reduxjs/toolkit'
 import './App.css';
 
 import Header from './components/Header/Header';
@@ -25,6 +26,38 @@ function App() {
   useEffect(() => {
     timer()
   }, []);
+
+  const initialState = { bombs: 40 }
+
+  function bombsReducer(state = initialState, action) {
+    // Check to see if the reducer cares about this action
+    if (action.type === 'bombs/findBomb') {
+      // If so, make a copy of `state`
+      return {
+        ...state,
+        // and update the copy with the new value
+        bombs: state.bombs - 1
+      }
+    }
+    // otherwise return the existing state unchanged
+    return state
+  }
+
+  const store = configureStore({ reducer: bombsReducer })
+
+  console.log(store.getState())
+  // {bombs: 40}
+
+  const findBomb = () => {
+    return {
+      type: 'bombs/findBomb'
+    }
+  }
+  
+  store.dispatch(findBomb())
+  
+  console.log(store.getState())
+  // {value: 2}
 
   return (
     <div className="App">
