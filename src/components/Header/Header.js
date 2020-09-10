@@ -6,7 +6,7 @@ import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import Clock from './Clock';
+import Timer from './Timer';
 
 export default function Header(props) {
 
@@ -24,7 +24,7 @@ export default function Header(props) {
         </div>
         <div className='clock'>
           <FontAwesomeIcon icon={faClock} />
-          <Clock
+          <Timer
             time = {props.time}
           />
         </div>
