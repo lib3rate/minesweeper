@@ -6,8 +6,12 @@ export const minesSlice = createSlice({
     value: 40,
   },
   reducers: {
-    addFlag: state => state.value -= 1,
-    removeFlag: state => state.value += 1,
+    addFlag: state => {
+      state.value -= 1;
+    },
+    removeFlag: state => {
+      state.value += 1;
+    },
   },
 });
 

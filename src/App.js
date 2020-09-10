@@ -12,23 +12,10 @@ function App() {
   
   const time = useSelector(selectTime);
   const mines = useSelector(selectMines);
-
-  console.log(mines);
-
-  // const timer = () => setInterval(() => dispatch(increment()), 1000);
   
   useEffect(() => {
-    runTimer()
-    // timer()
+    dispatch(runTimer())
   }, []);
-
-  // console.log(store.getState());
-  // // {mines: 40}
-  
-  // dispatch(addFlag());
-  
-  // console.log(store.getState());
-  // // {mines: 39}
 
   return (
     <div className="App">
