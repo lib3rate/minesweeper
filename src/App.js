@@ -1,15 +1,13 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addFlag, removeFlag, selectMines } from './components/Game/minesSlice';
+import { useDispatch } from 'react-redux';
 import './App.css';
 
+import { addFlag, removeFlag } from './components/Game/minesSlice';
 import Header from './components/Header/Header';
 import Game from './components/Game/Game';
 
 function App() {
   const dispatch = useDispatch();
-  
-  const mines = useSelector(selectMines);
 
   const leftClick = function(e) {
     console.log('Left click');
@@ -23,9 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header
-        mines={mines}
-      />
+      <Header/>
       <Game
         onMouseDown={leftClick}
         onContextMenu={rightClick}
