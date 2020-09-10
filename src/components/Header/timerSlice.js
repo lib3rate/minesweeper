@@ -14,8 +14,6 @@ export const timerSlice = createSlice({
 
 export const { increment } = timerSlice.actions;
 
-// export const runTimer = () => setInterval(() => increment(), 1000);
-
 export const runTimer = () => dispatch => {
   setInterval(() => {
     dispatch(increment());

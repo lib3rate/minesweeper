@@ -32,8 +32,21 @@ header {
   width: 5rem;
 }
 
+.grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.row {
+  display: flex;
+}
+
 .cell {
   display: flex;
-  margin: 0.5rem;
-  border: 1px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid black;
 }

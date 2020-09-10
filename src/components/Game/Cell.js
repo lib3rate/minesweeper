@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 
-import { addFlag, removeFlag } from './minesSlice';
+import { addFlag, removeFlag } from './gameSlice';
 
 export default function Cell(props) {
   const dispatch = useDispatch();

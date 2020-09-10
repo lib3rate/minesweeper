@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import minesReducer from '../components/Game/minesSlice';
+import gameReducer from '../components/Game/gameSlice';
 import timerReducer from '../components/Header/timerSlice';
 
 export default configureStore({
   reducer: {
-    mines: minesReducer,
+    game: gameReducer,
     timer: timerReducer,
   },
 });
