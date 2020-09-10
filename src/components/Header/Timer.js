@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { increment, runTimer, selectTime } from './timerSlice';
+import { runTimer, selectTime } from './timerSlice';
 
 export default function Timer(props) {
   const dispatch = useDispatch();

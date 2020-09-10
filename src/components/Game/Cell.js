@@ -1,18 +1,29 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 
-export default function Cell(props) {
+import { addFlag, removeFlag } from './minesSlice';
 
-  const handleRightClick = e => {
+export default function Cell(props) {
+  const dispatch = useDispatch();
+
+  const leftClick = function(e) {
+    console.log('Left click');
+    dispatch(addFlag());
+  };
+
+  const rightClick = function(e) {
     e.preventDefault();
-    props.onRightClick()
+    console.log('Right click');
+    dispatch(removeFlag());
   };
 
   return (
     <div className='cell'
-      onClick={props.onLeftClick}
-      onContextMenu={handleRightClick}
+      onMouseDown={leftClick}
+      onContextMenu={rightClick}
     >
       <FontAwesomeIcon icon={faFlag} />
     </div>
