@@ -27,37 +27,52 @@ function App() {
     timer()
   }, []);
 
-  const initialState = { bombs: 40 }
+  const initialState = {
+    mines: 40,
+    time: 0
+  }
 
-  function bombsReducer(state = initialState, action) {
+  function minesReducer(state = initialState, action) {
     // Check to see if the reducer cares about this action
-    if (action.type === 'bombs/findBomb') {
+    if (action.type === 'mines/addFlag') {
       // If so, make a copy of `state`
       return {
         ...state,
         // and update the copy with the new value
-        bombs: state.bombs - 1
+        mines: state.mines - 1
       }
     }
     // otherwise return the existing state unchanged
     return state
   }
 
-  const store = configureStore({ reducer: bombsReducer })
+  function timeReducer(state = initialState) {
+    let newTime = 0;
+
+    return setInterval(
+      () => {
+        newTime += 1;
+        setState({...state, time: newTime});
+      }
+      , 1000
+    );
+  };
+
+  const store = configureStore({ reducer: minesReducer })
 
   console.log(store.getState())
-  // {bombs: 40}
+  // {mines: 40}
 
-  const findBomb = () => {
+  const findMine = () => {
     return {
-      type: 'bombs/findBomb'
+      type: 'mines/addFlag'
     }
   }
   
-  store.dispatch(findBomb())
+  store.dispatch(findMine())
   
   console.log(store.getState())
-  // {value: 2}
+  // {mines: 39}
 
   return (
     <div className="App">
