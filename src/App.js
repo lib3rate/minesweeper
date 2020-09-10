@@ -17,13 +17,26 @@ function App() {
     dispatch(runTimer())
   }, []);
 
+  const leftClick = function(e) {
+    console.log('Left click');
+    dispatch(addFlag());
+  };
+
+  const rightClick = function(e) {
+    console.log('Right click');
+    dispatch(removeFlag());
+  };
+
   return (
     <div className="App">
       <Header
         mines={mines}
         time={time}
       />
-      <Game/>
+      <Game
+        onMouseDown={leftClick}
+        onContextMenu={rightClick}
+      />
     </div>
   );
 };

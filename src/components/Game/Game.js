@@ -4,6 +4,9 @@ import Cell from './Cell';
 export default function Game(props) {
 
   return (
-    <Cell/>
+    <Cell
+      onLeftClick={props.onMouseDown}
+      onRightClick={props.onContextMenu}
+    />
   )
 }
