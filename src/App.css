@@ -11,7 +11,7 @@ header {
   color: white;
 }
 
-.stats, .flags, .clock, .actions {
+.stats, .mines, .clock, .actions {
   display: flex;
   justify-content: space-between;
 }
@@ -20,7 +20,7 @@ header {
   width: 7rem;
 }
 
-.flags {
+.mines {
   width: 3rem;
 }
 

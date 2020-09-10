@@ -18,9 +18,9 @@ export default function Header(props) {
         <option>Hard</option>
       </select>
       <div className='stats'>
-        <div className='flags'>
+        <div className='mines'>
           <FontAwesomeIcon icon={faFlag} />
-          {40 - props.flags}
+          {props.mines}
         </div>
         <div className='clock'>
           <FontAwesomeIcon icon={faClock} />
