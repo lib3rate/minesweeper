@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+// import { countAdjacentMines } from '../../helpers/helpers';
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -7,6 +8,8 @@ export const gameSlice = createSlice({
     columns: 16,
     minesRemaining: 40,
     minesArray: [],
+    adjacentMines: 0,
+    mineSteppedOn: false,
   },
   reducers: {
     setMines: state => {
@@ -30,8 +33,11 @@ export const gameSlice = createSlice({
       const cellId = action.payload;
 
       if (minesArray.includes(cellId)) {
+        state.mineSteppedOn = true;
         alert('You stepped on a mine :( Game over, please try again!');
+
       } else {
+        // const adjacentMines = countAdjacentMines(cellId);
         let adjacentMines = 0;
 
         const adjacentNorth = cellId - 16;
@@ -76,6 +82,8 @@ export const gameSlice = createSlice({
 
         console.log(adjacentNorth, adjacentNorthEast, adjacentEast, adjacentSouthEast, adjacentSouth, adjacentSouthWest, adjacentWest, adjacentNorthWest);
         console.log('Adjacent mines: ' + adjacentMines);
+
+        state.adjacentMines = adjacentMines;
       }
     },
     addFlag: state => {
@@ -92,6 +100,8 @@ export const { setMines, revealCell, addFlag, removeFlag } = gameSlice.actions;
 export const selectRows = state => state.game.rows;
 export const selectColumns = state => state.game.columns;
 export const selectMinesRemaining = state => state.game.minesRemaining;
-export const selectMinesArray = state => state.game.minesArray;
+// export const selectMinesArray = state => state.game.minesArray;
+export const selectAdjacentMines = state => state.game.adjacentMines;
+export const isMineSteppedOn = state => state.game.mineSteppedOn;
 
 export default gameSlice.reducer;

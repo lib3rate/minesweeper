@@ -1,13 +1,16 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faBomb } from '@fortawesome/free-solid-svg-icons';
 
-import { revealCell, addFlag, removeFlag } from './gameSlice';
+import { revealCell, addFlag, removeFlag, selectAdjacentMines, isMineSteppedOn } from './gameSlice';
 
 export default function Cell(props) {
   const dispatch = useDispatch();
+
+  const adjacentMines = useSelector(selectAdjacentMines);
+  const mineSteppedOn = useSelector(isMineSteppedOn);
 
   const leftClick = function(e) {
     console.log('Left click on cell ID ' + props.cellId);
@@ -26,6 +29,8 @@ export default function Cell(props) {
       onMouseDown={leftClick}
       onContextMenu={rightClick}
     >
+      {mineSteppedOn ? <FontAwesomeIcon icon={faBomb} /> : null}
+      {!mineSteppedOn && adjacentMines > 0 ? adjacentMines : null}
     </div>
   )
 }

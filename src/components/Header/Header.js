@@ -12,7 +12,7 @@ import { selectMinesRemaining } from '../Game/gameSlice';
 import Timer from './Timer';
 
 export default function Header(props) {  
-  const mines = useSelector(selectMinesRemaining);
+  const minesRemaining = useSelector(selectMinesRemaining);
 
   return (
     <header>
@@ -24,7 +24,7 @@ export default function Header(props) {
       <div className='stats'>
         <div className='mines'>
           <FontAwesomeIcon icon={faFlag} />
-          {mines}
+          {minesRemaining}
         </div>
         <div className='clock'>
           <FontAwesomeIcon icon={faClock} />
