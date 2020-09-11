@@ -11,7 +11,7 @@ export default function Cell(props) {
 
   const leftClick = function(e) {
     console.log('Left click on cell ID ' + props.cellId);
-    dispatch(revealCell({ payload: props.cellId }));
+    dispatch(revealCell(props.cellId));
   };
 
   const rightClick = function(e) {
