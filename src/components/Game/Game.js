@@ -24,7 +24,7 @@ export default function Game(props) {
       <div
         className='row'
         key={'row ' + row + 1}
-        rowId={row}
+        row_id={row}
       >
         {renderCells(row)}
       </div>
@@ -41,6 +41,7 @@ export default function Game(props) {
           return (
             <Cell
               key={'cell ' + cellId}
+              cellId={cellId}
             />
           )
         })

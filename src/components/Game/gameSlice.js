@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { generateMines } from '../../helpers/helpers';
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -10,10 +9,8 @@ export const gameSlice = createSlice({
     minesArray: [],
   },
   reducers: {
-    // setMines: generateMines,
     setMines: state => {
       const numberOfCells = state.rows * state.columns;
-      // const minesArray = new Array(state.mines);
       const minesArray = state.minesArray;
       let minesCreated = 0;
     
@@ -26,6 +23,14 @@ export const gameSlice = createSlice({
         };
       }
     },
+    revealCell: (state, action) => {
+      const minesArray = state.minesArray;
+      console.log('MinesArray is ' + minesArray);
+      console.log('Payload is ' + action.payload.payload);
+      if (minesArray.includes(action.payload.payload)) {
+        console.log('Mine here!')
+      }
+    },
     addFlag: state => {
       state.mines -= 1;
     },
@@ -35,10 +40,11 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { setMines, addFlag, removeFlag } = gameSlice.actions;
+export const { setMines, revealCell, addFlag, removeFlag } = gameSlice.actions;
 
 export const selectRows = state => state.game.rows;
 export const selectColumns = state => state.game.columns;
 export const selectMines = state => state.game.mines;
+export const selectMinesArray = state => state.game.minesArray;
 
 export default gameSlice.reducer;
