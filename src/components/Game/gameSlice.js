@@ -10,6 +10,7 @@ export const gameSlice = createSlice({
     minesArray: [],
     adjacentMines: 0,
     mineSteppedOn: false,
+    clickedCell: null,
     revealedCells: [],
   },
   reducers: {
@@ -35,6 +36,7 @@ export const gameSlice = createSlice({
       console.log('Revealed cells are ' + state.revealedCells);
       state.revealedCells.push(cellId);
       console.log('Now revealed cells are ' + state.revealedCells);
+      state.clickedCell = cellId;
 
       if (minesArray.includes(cellId)) {
         state.mineSteppedOn = true;
@@ -107,6 +109,7 @@ export const selectMinesRemaining = state => state.game.minesRemaining;
 // export const selectMinesArray = state => state.game.minesArray;
 export const selectAdjacentMines = state => state.game.adjacentMines;
 export const isMineSteppedOn = state => state.game.mineSteppedOn;
+export const selectClickedCell = state => state.game.clickedCell;
 export const selectRevealedCells = state => state.game.revealedCells;
 
 export default gameSlice.reducer;

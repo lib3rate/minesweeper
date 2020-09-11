@@ -2,12 +2,17 @@ import React from "react";
 import { useSelector } from 'react-redux';
 
 import { repeat } from '../../helpers/helpers';
-import { selectRows, selectColumns } from './gameSlice';
+import { selectRows, selectColumns, selectClickedCell } from './gameSlice';
 import Cell from './Cell';
 
 export default function Game(props) {
   const numberOfRows = useSelector(selectRows);
   const numberOfColumns = useSelector(selectColumns);
+  // const clickedCell = useSelector(selectClickedCell);
+
+  // function checkIfClicked(clickedCell, cellId) {
+  //   return clickedCell === cellId;
+  // };
 
   // Generate an array of empty rows for the game grid  
   function renderGrid() {
@@ -38,10 +43,13 @@ export default function Game(props) {
         .map((_, index) => {
           const cellId = row * numberOfColumns + index;
 
+          // const isClicked = checkIfClicked(clickedCell, cellId);
+
           return (
             <Cell
               key={'cell ' + cellId}
               cellId={cellId}
+              // isClicked={isClicked}
             />
           )
         })
