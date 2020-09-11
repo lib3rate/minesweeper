@@ -8,11 +8,11 @@ import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { selectMines } from '../Game/gameSlice';
+import { selectMinesRemaining } from '../Game/gameSlice';
 import Timer from './Timer';
 
 export default function Header(props) {  
-  const mines = useSelector(selectMines);
+  const mines = useSelector(selectMinesRemaining);
 
   return (
     <header>

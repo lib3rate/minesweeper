@@ -5,7 +5,7 @@ export const gameSlice = createSlice({
   initialState: {
     rows: 16,
     columns: 16,
-    mines: 40,
+    minesRemaining: 40,
     minesArray: [],
   },
   reducers: {
@@ -14,7 +14,7 @@ export const gameSlice = createSlice({
       const minesArray = state.minesArray;
       let minesCreated = 0;
     
-      while (minesCreated < state.mines) {
+      while (minesCreated < state.minesRemaining) {
         const cellIndex = Math.floor(Math.random() * numberOfCells);
         
         if (!minesArray.includes(cellIndex)) {
@@ -26,16 +26,16 @@ export const gameSlice = createSlice({
     revealCell: (state, action) => {
       const minesArray = state.minesArray;
       console.log('MinesArray is ' + minesArray);
-      console.log('Payload is ' + action.payload.payload);
+      
       if (minesArray.includes(action.payload.payload)) {
-        console.log('Mine here!')
+        console.log('You stepped on a mine :( Game over, please try again!')
       }
     },
     addFlag: state => {
-      state.mines -= 1;
+      state.minesRemaining -= 1;
     },
     removeFlag: state => {
-      state.mines += 1;
+      state.minesRemaining += 1;
     },
   },
 });
@@ -44,7 +44,7 @@ export const { setMines, revealCell, addFlag, removeFlag } = gameSlice.actions;
 
 export const selectRows = state => state.game.rows;
 export const selectColumns = state => state.game.columns;
-export const selectMines = state => state.game.mines;
+export const selectMinesRemaining = state => state.game.minesRemaining;
 export const selectMinesArray = state => state.game.minesArray;
 
 export default gameSlice.reducer;

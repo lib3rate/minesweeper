@@ -4,26 +4,19 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 
-// import configureStore from '../../app/store';
-// import { revealCell } from '../../helpers/helpers';
 import { revealCell, addFlag, removeFlag } from './gameSlice';
 
 export default function Cell(props) {
   const dispatch = useDispatch();
 
-  // const store = configureStore();
-
   const leftClick = function(e) {
-    console.log('Left click');
-    console.log('Cell ID is ' + props.cellId);
-    // console.log(store.getState());
+    console.log('Left click on cell ID ' + props.cellId);
     dispatch(revealCell({ payload: props.cellId }));
-    // revealCell(props.cellId);
   };
 
   const rightClick = function(e) {
     e.preventDefault();
-    console.log('Right click');
+    console.log('Right click on cell ID ' + props.cellId);
     dispatch(addFlag());
     // dispatch(removeFlag());
   };
