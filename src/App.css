@@ -49,4 +49,6 @@ header {
   width: 1.5rem;
   height: 1.5rem;
   border: 1px solid black;
+  justify-content: center;
+  align-items: center;
 }

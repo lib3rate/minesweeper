@@ -25,7 +25,6 @@ export default function Cell(props) {
       onMouseDown={leftClick}
       onContextMenu={rightClick}
     >
-      <FontAwesomeIcon icon={faFlag} />
     </div>
   )
 }

@@ -9,6 +9,7 @@ export default function Game(props) {
   const numberOfRows = useSelector(selectRows);
   const numberOfColumns = useSelector(selectColumns);
 
+  // Generate an array of empty rows for the game grid  
   function renderGrid() {
     return (
       repeat(null, numberOfRows)
@@ -16,6 +17,7 @@ export default function Game(props) {
     )
   };
 
+  // Fill the generated empty rows with actual HTML rows
   function renderRows(row) {
     return (
       <div
@@ -27,15 +29,18 @@ export default function Game(props) {
     )
   };
 
+  // Fill the HTML rows with cells
   function renderCells(row) {
     return (
       repeat(null, numberOfColumns)
         .map(index => {
           const cellId = row * numberOfColumns + index;
 
-          return <Cell
-                   key={'cell ' + cellId}
-                 />
+          return (
+            <Cell
+              key={'cell ' + cellId}
+            />
+          )
         })
     )
   };
