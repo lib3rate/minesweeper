@@ -13,7 +13,8 @@ export default function Game(props) {
   function renderGrid() {
     return (
       repeat(null, numberOfRows)
-        .map(index => renderRows(index))
+        // .map(index => renderRows(index))
+        .map((_, index) => renderRows(index))
     )
   };
 
@@ -23,6 +24,7 @@ export default function Game(props) {
       <div
         className='row'
         key={'row ' + row + 1}
+        rowId={row}
       >
         {renderCells(row)}
       </div>
@@ -33,7 +35,7 @@ export default function Game(props) {
   function renderCells(row) {
     return (
       repeat(null, numberOfColumns)
-        .map(index => {
+        .map((_, index) => {
           const cellId = row * numberOfColumns + index;
 
           return (
