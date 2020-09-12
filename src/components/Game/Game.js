@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 
-import { repeat } from '../../helpers/helpers';
+import { repeat, checkIfRevealed } from '../../helpers/helpers';
 import { selectRows, selectColumns, selectRevealedCells } from './gameSlice';
 import Cell from './Cell';
 
@@ -10,24 +10,10 @@ export default function Game(props) {
   const numberOfColumns = useSelector(selectColumns);
   const revealedCells = useSelector(selectRevealedCells);
 
-  function checkIfRevealed(revealedCells, cellId) {
-    const arrayOfKeys = [];
-    for (let key of Object.keys(revealedCells)) {
-      const convertedKey = Number(key);
-      arrayOfKeys.push(convertedKey);
-    }
-    return arrayOfKeys.includes(cellId);
-    // console.log(Object.keys(revealedCells));
-    // const keys = Object.keys(revealedCells);
-    // return Object.keys(revealedCells).includes(cellId);
-    // return Object.keys(revealedCells).includes(Number(cellId));
-  };
-
   // Generate an array of empty rows for the game grid  
   function renderGrid() {
     return (
       repeat(null, numberOfRows)
-        // .map(index => renderRows(index))
         .map((_, index) => renderRows(index))
     )
   };
