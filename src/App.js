@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector, Provider } from 'react-redux';
-import './App.css';
+import './styles/styles.scss';
 
 // import { store } from './app/store';
 import { setMines, isMineSteppedOn } from './components/Game/gameSlice';
