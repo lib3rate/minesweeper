@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector, Provider } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles/styles.scss';
 
-// import { store } from './app/store';
 import { setMines, isMineSteppedOn } from './components/Game/gameSlice';
 import Header from './components/Header/Header';
 import Message from './components/Message/Message';
@@ -18,13 +17,11 @@ function App() {
   }, []);
 
   return (
-    // <Provider store={store}>
-      <div className="App">
-        <Header/>
-        {mineSteppedOn ? <Message/> : null}
-        <Game/>
-      </div>
-    // </Provider>
+    <div className="App">
+      <Header/>
+      {mineSteppedOn ? <Message/> : null}
+      <Game/>
+    </div>
   );
 };
 

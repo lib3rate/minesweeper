@@ -13,7 +13,6 @@ export default function Cell(props) {
   const gameOver = useSelector(isMineSteppedOn);
 
   const leftClick = function(e) {
-    // console.log('Left click on cell ID ' + props.cellId);
     if (!gameOver) {
       dispatch(revealCell(props.cellId));
     }
@@ -21,7 +20,6 @@ export default function Cell(props) {
 
   const rightClick = function(e) {
     e.preventDefault();
-    // console.log('Right click on cell ID ' + props.cellId);
     if (!gameOver && !props.isFlagged) {
       dispatch(addFlag(props.cellId));
     } else if (!gameOver && props.isFlagged) {

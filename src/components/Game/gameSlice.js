@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { countAdjacentMines } from '../../helpers/helpers';
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -29,8 +28,6 @@ export const gameSlice = createSlice({
     },
     revealCell: (state, action) => {
       const minesArray = state.minesArray;
-      console.log('MinesArray is ' + minesArray);
-      
       const cellId = action.payload;
 
       if (minesArray.includes(cellId)) {
@@ -38,7 +35,6 @@ export const gameSlice = createSlice({
         state.revealedCells[cellId] = 'mine';
 
       } else {
-        // const adjacentMines = countAdjacentMines(cellId);
         let adjacentMines = 0;
 
         const adjacentNorth = cellId - 16;
