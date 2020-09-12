@@ -34,7 +34,7 @@ export default function Cell(props) {
       onClick={leftClick}
       onContextMenu={rightClick}
     >
-      {props.isFlagged ? <FontAwesomeIcon icon={faFlag} /> : null}
+      {props.isFlagged ? <FontAwesomeIcon icon={faFlag} className='flag' /> : null}
       {props.isRevealed && (revealedCells[props.cellId] === 'mine') ? <FontAwesomeIcon icon={faBomb} /> : null}
       {props.isRevealed && (revealedCells[props.cellId] !== 'mine') ? revealedCells[props.cellId] : null}
     </div>
