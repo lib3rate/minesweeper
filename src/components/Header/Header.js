@@ -21,7 +21,7 @@ export default function Header(props) {
       </select>
       <div className='stats'>
         <div className='mines'>
-          <FontAwesomeIcon icon={faFlag} />
+          <FontAwesomeIcon icon={faFlag} className='flag' />
           {minesRemaining}
         </div>
         <div className='clock'>
