@@ -12,6 +12,7 @@ header {
   height: 5rem;
   width: 100%;
   background-color: darkgreen;
+  /* background-image: url("https://www.transparenttextures.com/patterns/light-wool.png"); */
   color: white;
 }
 
@@ -22,6 +23,8 @@ header {
 
 .stats {
   width: 7rem;
+  padding: 0.5rem;
+  border: 1px solid white;
 }
 
 .mines {
@@ -30,6 +33,7 @@ header {
 
 .clock {
   width: 3rem;
+
 }
 
 .actions {
@@ -41,7 +45,7 @@ header {
   justify-content: center;
   width: 70%;
   margin: 3rem 0 0 0;
-  border: 1px solid black;
+  border: 3px solid red;
   padding: 1rem;
 }
 
