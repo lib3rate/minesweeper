@@ -34,6 +34,7 @@ export const gameSlice = createSlice({
 
       if (minesArray.includes(cellId)) {
         state.mineSteppedOn = true;
+        state.revealedCells[cellId] = 'mine';
         alert('You stepped on a mine :( Game over, please try again!');
 
       } else {
@@ -85,6 +86,7 @@ export const gameSlice = createSlice({
     },
     addFlag: state => {
       state.minesRemaining -= 1;
+      // state.flaggedCells.push(cellId);
     },
     removeFlag: state => {
       state.minesRemaining += 1;

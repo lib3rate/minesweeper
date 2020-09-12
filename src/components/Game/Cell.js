@@ -30,8 +30,8 @@ export default function Cell(props) {
       onMouseDown={leftClick}
       onContextMenu={rightClick}
     >
-      {props.isRevealed && mineSteppedOn ? <FontAwesomeIcon icon={faBomb} /> : null}
-      {props.isRevealed && !mineSteppedOn ? revealedCells[props.cellId] : null}
+      {props.isRevealed && (revealedCells[props.cellId] === 'mine') ? <FontAwesomeIcon icon={faBomb} /> : null}
+      {props.isRevealed && (revealedCells[props.cellId] !== 'mine') ? revealedCells[props.cellId] : null}
     </div>
   )
 }
