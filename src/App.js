@@ -5,12 +5,13 @@ import './App.css';
 // import { store } from './app/store';
 import { setMines, isMineSteppedOn } from './components/Game/gameSlice';
 import Header from './components/Header/Header';
+import Message from './components/Message/Message';
 import Game from './components/Game/Game';
 
 function App() {
   const dispatch = useDispatch();
 
-  // const mineSteppedOn = useSelector(isMineSteppedOn);
+  const mineSteppedOn = useSelector(isMineSteppedOn);
 
   useEffect(() => {
     dispatch(setMines())
@@ -20,6 +21,7 @@ function App() {
     // <Provider store={store}>
       <div className="App">
         <Header/>
+        {mineSteppedOn ? <Message/> : null}
         <Game/>
       </div>
     // </Provider>

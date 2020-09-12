@@ -4,12 +4,10 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
-import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { selectMinesRemaining } from '../Game/gameSlice';
 import Timer from './Timer';
+import ActionsMenu from './ActionsMenu';
 
 export default function Header(props) {  
   const minesRemaining = useSelector(selectMinesRemaining);
@@ -31,11 +29,7 @@ export default function Header(props) {
           <Timer/>
         </div>
       </div>
-      <div className='actions'>
-        <FontAwesomeIcon icon={faVolumeUp} />
-        <FontAwesomeIcon icon={faShareAlt} />
-        <FontAwesomeIcon icon={faTimes} />
-      </div>
+      <ActionsMenu/>
     </header>
   )
 }

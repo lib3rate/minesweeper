@@ -36,7 +36,7 @@ export const gameSlice = createSlice({
       if (minesArray.includes(cellId)) {
         state.mineSteppedOn = true;
         state.revealedCells[cellId] = 'mine';
-        alert('You stepped on a mine :( Game over, please try again!');
+        // alert('You stepped on a mine :( Game over, please try again!');
 
       } else {
         // const adjacentMines = countAdjacentMines(cellId);
