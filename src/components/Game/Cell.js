@@ -4,25 +4,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag, faBomb } from '@fortawesome/free-solid-svg-icons';
 
-import { revealCell, addFlag, removeFlag, selectRevealedCells } from './gameSlice';
+import { revealCell, addFlag, removeFlag, selectRevealedCells, isMineSteppedOn } from './gameSlice';
 
 export default function Cell(props) {
   const dispatch = useDispatch();
 
   const revealedCells = useSelector(selectRevealedCells);
+  const gameOver = useSelector(isMineSteppedOn);
 
   const leftClick = function(e) {
-    console.log('Left click on cell ID ' + props.cellId);
-    dispatch(revealCell(props.cellId));
-    console.log('Is it revealed now? ' + props.isRevealed);
+    // console.log('Left click on cell ID ' + props.cellId);
+    if (!gameOver) {
+      dispatch(revealCell(props.cellId));
+    }
   };
 
   const rightClick = function(e) {
     e.preventDefault();
-    console.log('Right click on cell ID ' + props.cellId);
-    if (!props.isFlagged) {
+    // console.log('Right click on cell ID ' + props.cellId);
+    if (!gameOver && !props.isFlagged) {
       dispatch(addFlag(props.cellId));
-    } else {
+    } else if (!gameOver && props.isFlagged) {
       dispatch(removeFlag(props.cellId));
     }
   };
