@@ -91,8 +91,13 @@ export const gameSlice = createSlice({
       state.minesRemaining -= 1;
       state.flaggedCells.push(cellId);
     },
-    removeFlag: state => {
+    removeFlag: (state, action) => {
+      const cellId = action.payload;
+
       state.minesRemaining += 1;
+
+      const index = state.flaggedCells.indexOf(cellId);
+      state.flaggedCells.splice(index, 1);
     },
   },
 });

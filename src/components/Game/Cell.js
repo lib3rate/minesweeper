@@ -20,8 +20,11 @@ export default function Cell(props) {
   const rightClick = function(e) {
     e.preventDefault();
     console.log('Right click on cell ID ' + props.cellId);
-    dispatch(addFlag(props.cellId));
-    // dispatch(removeFlag());
+    if (!props.isFlagged) {
+      dispatch(addFlag(props.cellId));
+    } else {
+      dispatch(removeFlag(props.cellId));
+    }
   };
 
   return (
