@@ -10,6 +10,7 @@ export const gameSlice = createSlice({
     minesArray: [],
     mineSteppedOn: false,
     revealedCells: {},
+    flaggedCells: [],
   },
   reducers: {
     setMines: state => {
@@ -84,9 +85,11 @@ export const gameSlice = createSlice({
         state.revealedCells[cellId] = adjacentMines;
       }
     },
-    addFlag: state => {
+    addFlag: (state, action) => {
+      const cellId = action.payload;
+
       state.minesRemaining -= 1;
-      // state.flaggedCells.push(cellId);
+      state.flaggedCells.push(cellId);
     },
     removeFlag: state => {
       state.minesRemaining += 1;
@@ -101,5 +104,6 @@ export const selectColumns = state => state.game.columns;
 export const selectMinesRemaining = state => state.game.minesRemaining;
 export const isMineSteppedOn = state => state.game.mineSteppedOn;
 export const selectRevealedCells = state => state.game.revealedCells;
+export const selectFlaggedCells = state => state.game.flaggedCells;
 
 export default gameSlice.reducer;

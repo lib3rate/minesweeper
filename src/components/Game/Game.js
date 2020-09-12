@@ -1,14 +1,15 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 
-import { repeat, checkIfRevealed } from '../../helpers/helpers';
-import { selectRows, selectColumns, selectRevealedCells } from './gameSlice';
+import { repeat, checkIfRevealed, checkIfFlagged } from '../../helpers/helpers';
+import { selectRows, selectColumns, selectRevealedCells, selectFlaggedCells } from './gameSlice';
 import Cell from './Cell';
 
 export default function Game(props) {
   const numberOfRows = useSelector(selectRows);
   const numberOfColumns = useSelector(selectColumns);
   const revealedCells = useSelector(selectRevealedCells);
+  const flaggedCells = useSelector(selectFlaggedCells);
 
   // Generate an array of empty rows for the game grid  
   function renderGrid() {
@@ -39,12 +40,14 @@ export default function Game(props) {
           const cellId = row * numberOfColumns + index;
 
           const isRevealed = checkIfRevealed(revealedCells, cellId);
+          const isFlagged = checkIfFlagged(flaggedCells, cellId);
 
           return (
             <Cell
               key={'cell ' + cellId}
               cellId={cellId}
               isRevealed={isRevealed}
+              isFlagged={isFlagged}
             />
           )
         })

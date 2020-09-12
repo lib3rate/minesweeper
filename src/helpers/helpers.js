@@ -17,6 +17,10 @@ export function checkIfRevealed(revealedCells, cellId) {
   return arrayOfKeys.includes(cellId);
 };
 
+export function checkIfFlagged(flaggedCells, cellId) {
+  return flaggedCells.includes(cellId);
+};
+
 // export function countAdjacentMines(cellId) {
 //   let adjacentMines = 0;
 
