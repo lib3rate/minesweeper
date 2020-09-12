@@ -2,17 +2,26 @@ import React from "react";
 import { useSelector } from 'react-redux';
 
 import { repeat } from '../../helpers/helpers';
-import { selectRows, selectColumns, selectClickedCell } from './gameSlice';
+import { selectRows, selectColumns, selectRevealedCells } from './gameSlice';
 import Cell from './Cell';
 
 export default function Game(props) {
   const numberOfRows = useSelector(selectRows);
   const numberOfColumns = useSelector(selectColumns);
-  // const clickedCell = useSelector(selectClickedCell);
+  const revealedCells = useSelector(selectRevealedCells);
 
-  // function checkIfClicked(clickedCell, cellId) {
-  //   return clickedCell === cellId;
-  // };
+  function checkIfRevealed(revealedCells, cellId) {
+    const arrayOfKeys = [];
+    for (let key of Object.keys(revealedCells)) {
+      const convertedKey = Number(key);
+      arrayOfKeys.push(convertedKey);
+    }
+    return arrayOfKeys.includes(cellId);
+    // console.log(Object.keys(revealedCells));
+    // const keys = Object.keys(revealedCells);
+    // return Object.keys(revealedCells).includes(cellId);
+    // return Object.keys(revealedCells).includes(Number(cellId));
+  };
 
   // Generate an array of empty rows for the game grid  
   function renderGrid() {
@@ -43,13 +52,13 @@ export default function Game(props) {
         .map((_, index) => {
           const cellId = row * numberOfColumns + index;
 
-          // const isClicked = checkIfClicked(clickedCell, cellId);
+          const isRevealed = checkIfRevealed(revealedCells, cellId);
 
           return (
             <Cell
               key={'cell ' + cellId}
               cellId={cellId}
-              // isClicked={isClicked}
+              isRevealed={isRevealed}
             />
           )
         })

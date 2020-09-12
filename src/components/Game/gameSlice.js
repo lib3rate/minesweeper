@@ -8,10 +8,11 @@ export const gameSlice = createSlice({
     columns: 16,
     minesRemaining: 40,
     minesArray: [],
-    adjacentMines: 0,
+    // adjacentMines: 0,
     mineSteppedOn: false,
-    clickedCell: null,
-    revealedCells: [],
+    // clickedCell: null,
+    // revealedCells: [],
+    revealedCells: {},
   },
   reducers: {
     setMines: state => {
@@ -33,10 +34,10 @@ export const gameSlice = createSlice({
       console.log('MinesArray is ' + minesArray);
       
       const cellId = action.payload;
-      console.log('Revealed cells are ' + state.revealedCells);
-      state.revealedCells.push(cellId);
-      console.log('Now revealed cells are ' + state.revealedCells);
-      state.clickedCell = cellId;
+      // console.log('Revealed cells are ' + state.revealedCells);
+      // state.revealedCells.push(cellId);
+      // console.log('Now revealed cells are ' + state.revealedCells);
+      // state.clickedCell = cellId;
 
       if (minesArray.includes(cellId)) {
         state.mineSteppedOn = true;
@@ -86,10 +87,15 @@ export const gameSlice = createSlice({
           adjacentMines += 1;
         };
 
-        console.log(adjacentNorth, adjacentNorthEast, adjacentEast, adjacentSouthEast, adjacentSouth, adjacentSouthWest, adjacentWest, adjacentNorthWest);
-        console.log('Adjacent mines: ' + adjacentMines);
+        // console.log(adjacentNorth, adjacentNorthEast, adjacentEast, adjacentSouthEast, adjacentSouth, adjacentSouthWest, adjacentWest, adjacentNorthWest);
+        // console.log('Adjacent mines: ' + adjacentMines);
 
-        state.adjacentMines = adjacentMines;
+        // console.log('Cell ID is ' + cellId);
+        // console.log('Before: ' + Object.keys(state.revealedCells));
+        state.revealedCells[cellId] = adjacentMines;
+        // console.log('After: ' + Object.keys(state.revealedCells));
+
+        // state.adjacentMines = adjacentMines;
       }
     },
     addFlag: state => {
@@ -107,9 +113,9 @@ export const selectRows = state => state.game.rows;
 export const selectColumns = state => state.game.columns;
 export const selectMinesRemaining = state => state.game.minesRemaining;
 // export const selectMinesArray = state => state.game.minesArray;
-export const selectAdjacentMines = state => state.game.adjacentMines;
+// export const selectAdjacentMines = state => state.game.adjacentMines;
 export const isMineSteppedOn = state => state.game.mineSteppedOn;
-export const selectClickedCell = state => state.game.clickedCell;
+// export const selectClickedCell = state => state.game.clickedCell;
 export const selectRevealedCells = state => state.game.revealedCells;
 
 export default gameSlice.reducer;
