@@ -1,0 +1,34 @@
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 5rem;
+  width: 100%;
+  background-color: darkgreen;
+  /* background-image: url("https://www.transparenttextures.com/patterns/light-wool.png"); */
+  color: white;
+}
+
+.stats, .mines, .clock, .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats {
+  width: 7rem;
+  padding: 0.5rem;
+  border: 1px solid white;
+}
+
+.mines {
+  width: 3rem;
+}
+
+.clock {
+  width: 3rem;
+
+}
+
+.actions {
+  width: 5rem;
+}
